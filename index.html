@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Smart School Management System">
+  <title>SmartSchool | School Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="login-screen" id="loginScreen" aria-labelledby="loginTitle">
+    <div class="login-card">
+      <div class="login-brand"><span class="brand-logo">S<span>S</span></span></div>
+      <span class="overline">SMART SCHOOL MANAGEMENT</span>
+      <h1 id="loginTitle">Karibu tena 👋</h1>
+      <p class="login-intro">Ingia kwenye akaunti yako ili kuendelea.</p>
+      <form id="loginForm" class="login-form">
+        <label for="loginRole">Aina ya mtumiaji</label>
+        <select id="loginRole" class="input" required>
+          <option value="admin">Admin</option>
+          <option value="headmaster">Mwalimu Mkuu</option>
+          <option value="teacher">Mwalimu wa Darasa</option>
+        </select>
+        <label for="loginUsername">Jina la mtumiaji</label>
+        <input id="loginUsername" class="input" autocomplete="username" required placeholder="Weka username">
+        <label for="loginPassword">Nenosiri</label>
+        <input id="loginPassword" class="input" type="password" autocomplete="current-password" required placeholder="Weka nenosiri">
+        <p id="loginError" class="login-error" role="alert"></p>
+        <button class="btn btn-primary login-submit" type="submit">Ingia kwenye mfumo <span>→</span></button>
+      </form>
+      <div class="demo-accounts"><strong>TAARIFA ZA KUJARIBU</strong>
+        <p>Admin: <code>admin</code> / <code>Admin@123</code></p>
+        <p>Mwalimu Mkuu: <code>mkuu</code> / <code>Mkuu@123</code></p>
+        <p>Mwalimu wa Darasa: <code>mwalimu</code> / <code>Mwalimu@123</code></p>
+      </div>
+      <small class="login-warning">Demo ya kujifunzia tu. Usitumie nywila hizi kwenye mfumo halisi.</small>
+    </div>
+  </section>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="SmartSchool mwanzo">
+        <span class="brand-logo">S<span>S</span></span>
+        <span><strong>SmartSchool</strong><small>MANAGEMENT SYSTEM</small></span>
+      </a>
+      <div class="nav-caption">MENU KUU</div>
+      <nav class="navigation" aria-label="Menyu kuu">
+        <button class="nav-link active" data-page="dashboard"><span class="nav-icon">▦</span> Dashboard</button>
+        <button class="nav-link" data-page="students"><span class="nav-icon">♙</span> Wanafunzi <span class="nav-count" id="navStudentCount">0</span></button>
+        <button class="nav-link" data-page="attendance"><span class="nav-icon">✓</span> Mahudhurio</button>
+        <button class="nav-link" data-page="results"><span class="nav-icon">▤</span> Matokeo</button>
+        <button class="nav-link" data-page="classes"><span class="nav-icon">▣</span> Madarasa</button>
+        <button class="nav-link" data-page="reports"><span class="nav-icon">▥</span> Ripoti</button>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <div class="storage-card">
+        <span class="storage-icon">i</span>
+        <div><strong>Hifadhi ya ndani</strong><p>Taarifa huhifadhiwa kwenye browser hii.</p></div>
+      </div>
+      <div class="sidebar-footer">SmartSchool <span>VERSION 2.0</span></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle" id="menuToggle" aria-label="Fungua menyu">☰</button>
+          <div class="breadcrumb"><span>Shule</span><span class="slash">/</span><strong id="breadcrumbCurrent">Dashboard</strong></div>
+        </div>
+        <div class="topbar-right">
+          <div class="current-date"><span class="calendar-symbol">▦</span><span id="currentDate"></span></div>
+          <div class="profile">
+            <div class="profile-avatar">AD</div>
+            <div class="profile-text"><strong id="loggedInName">Administrator</strong><small id="loggedInRole">Admin</small></div><button class="btn btn-secondary logout-button" id="logoutButton" type="button">Toka</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="page active" id="page-dashboard">
+        <div class="page-heading">
+          <div><span class="overline">MUHTASARI WA SHULE</span><h1>Karibu, Msimamizi 👋</h1><p>Huu ni muhtasari wa taarifa za shule yako.</p></div>
+          <button class="btn btn-primary" data-open-page="students"><span>＋</span> Sajili mwanafunzi</button>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-label">Jumla ya wanafunzi <span class="stat-symbol violet">♙</span></div><div class="stat-number" id="totalStudents">0</div><div class="stat-foot">Wanafunzi waliosajiliwa</div></article>
+          <article class="stat-card"><div class="stat-label">Mahudhurio leo <span class="stat-symbol emerald">✓</span></div><div class="stat-number" id="todayAttendance">0%</div><div class="stat-foot">Waliohudhuria au kuchelewa</div></article>
+          <article class="stat-card"><div class="stat-label">Rekodi za matokeo <span class="stat-symbol amber">▤</span></div><div class="stat-number" id="totalResults">0</div><div class="stat-foot">Alama zilizohifadhiwa</div></article>
+          <article class="stat-card"><div class="stat-label">Madarasa <span class="stat-symbol sky">▣</span></div><div class="stat-number" id="totalClasses">0</div><div class="stat-foot">Madarasa yenye wanafunzi</div></article>
+        </div>
+        <div class="dashboard-grid">
+          <article class="panel">
+            <div class="panel-heading"><div><h2>Wanafunzi wa hivi karibuni</h2><p>Wanafunzi walioongezwa karibuni kwenye mfumo</p></div><button class="btn btn-link" data-open-page="students">Ona wote <span>→</span></button></div>
+            <div class="table-container"><table><thead><tr><th>MWANAFUNZI</th><th>NAMBA</th><th>DARASA</th><th>JINSIA</th></tr></thead><tbody id="recentStudents"></tbody></table></div>
+            <div class="empty-state" id="recentStudentsEmpty"><div class="empty-icon">♙</div><strong>Bado hakuna wanafunzi</strong><p>Sajili mwanafunzi wako wa kwanza ili kuanza.</p><button class="btn btn-primary" data-open-page="students">＋ Sajili mwanafunzi</button></div>
+          </article>
+          <article class="panel">
+            <div class="panel-heading"><div><h2>Vitendo vya haraka</h2><p>Fikia kazi muhimu kwa urahisi</p></div></div>
+            <div class="quick-links">
+              <button class="quick-link" data-open-page="students"><span class="quick-icon violet">＋</span><span><strong>Sajili mwanafunzi</strong><small>Ongeza taarifa mpya</small></span><span class="arrow">→</span></button>
+              <button class="quick-link" data-open-page="attendance"><span class="quick-icon emerald">✓</span><span><strong>Rekodi mahudhurio</strong><small>Weka mahudhurio ya leo</small></span><span class="arrow">→</span></button>
+              <button class="quick-link" data-open-page="results"><span class="quick-icon amber">▤</span><span><strong>Ingiza matokeo</strong><small>Hifadhi alama za mitihani</small></span><span class="arrow">→</span></button>
+              <button class="quick-link" data-open-page="reports"><span class="quick-icon sky">▥</span><span><strong>Angalia ripoti</strong><small>Muhtasari wa taarifa</small></span><span class="arrow">→</span></button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="page-students">
+        <div class="page-heading"><div><span class="overline">USIMAMIZI WA WANAFUNZI</span><h1>Wanafunzi</h1><p>Sajili, tafuta, hariri au futa taarifa za wanafunzi.</p></div><button class="btn btn-primary" id="showStudentForm">＋ Sajili mwanafunzi</button></div>
+        <article class="panel">
+          <div class="toolbar"><div><h2>Orodha ya wanafunzi</h2><p id="studentCount">Jumla: 0</p></div><input id="studentSearch" class="input search-input" type="search" placeholder="Tafuta jina, namba au darasa..." aria-label="Tafuta wanafunzi"></div>
+          <form id="studentForm" class="form-panel hidden">
+            <div class="form-heading"><div><h3 id="studentFormHeading">Sajili mwanafunzi mpya</h3><p>Jaza taarifa zilizo hapa chini.</p></div><button class="icon-button" id="closeStudentForm" type="button" aria-label="Funga fomu">×</button></div>
+            <input type="hidden" id="studentEditId">
+            <div class="form-grid">
+              <label>Jina kamili <em>*</em><input class="input" id="studentName" required maxlength="80" placeholder="Mf. Asha Juma"></label>
+              <label>Namba ya mwanafunzi <em>*</em><input class="input" id="studentNumber" required maxlength="30" placeholder="Mf. STU001"></label>
+              <label>Darasa <em>*</em><select class="input" id="studentClass" required><option value="">Chagua darasa</option><option>Form I</option><option>Form II</option><option>Form III</option><option>Form IV</option><option>Form V</option><option>Form VI</option><option>Standard 1</option><option>Standard 2</option><option>Standard 3</option><option>Standard 4</option><option>Standard 5</option><option>Standard 6</option><option>Standard 7</option></select></label>
+              <label>Jinsia <em>*</em><select class="input" id="studentGender" required><option value="">Chagua jinsia</option><option>Mwanaume</option><option>Mwanamke</option></select></label>
+              <label>Tarehe ya kuzaliwa<input class="input" id="studentDob" type="date"></label>
+              <label>Mzazi au mlezi<input class="input" id="studentGuardian" maxlength="80" placeholder="Jina la mzazi/mlezi"></label>
+            </div>
+            <div class="form-actions"><button class="btn btn-secondary" type="button" id="cancelStudentForm">Ghairi</button><button class="btn btn-primary" type="submit">Hifadhi taarifa</button></div>
+          </form>
+          <div class="table-container"><table><thead><tr><th>MWANAFUNZI</th><th>NAMBA</th><th>DARASA</th><th>JINSIA</th><th>MZAZI/MLEZI</th><th>VITENDO</th></tr></thead><tbody id="studentsTable"></tbody></table></div>
+          <div class="empty-state hidden" id="studentsEmpty"><div class="empty-icon">⌕</div><strong>Hakuna matokeo</strong><p>Hakuna mwanafunzi anayelingana na utafutaji wako.</p></div>
+        </article>
+      </section>
+
+      <section class="page" id="page-attendance">
+        <div class="page-heading"><div><span class="overline">UFUATILIAJI WA MAHUDHURIO</span><h1>Mahudhurio</h1><p>Rekodi na simamia mahudhurio ya wanafunzi kwa siku.</p></div></div>
+        <article class="panel">
+          <div class="toolbar"><div><h2>Mahudhurio ya siku</h2><p>Chagua tarehe na hali ya kila mwanafunzi.</p></div><input type="date" id="attendanceDate" class="input date-input" aria-label="Tarehe ya mahudhurio"></div>
+          <div class="info-banner"><span>i</span> Chagua hali ya kila mwanafunzi, kisha bonyeza “Hifadhi mahudhurio”.</div>
+          <div class="table-container"><table><thead><tr><th>MWANAFUNZI</th><th>DARASA</th><th>HALI YA MAHUDHURIO</th></tr></thead><tbody id="attendanceTable"></tbody></table></div>
+          <div class="empty-state hidden" id="attendanceEmpty"><div class="empty-icon">✓</div><strong>Hakuna wanafunzi bado</strong><p>Sajili wanafunzi kwanza ili kurekodi mahudhurio.</p></div>
+          <div class="form-actions"><button class="btn btn-primary" id="saveAttendance">Hifadhi mahudhurio</button></div>
+        </article>
+      </section>
+
+      <section class="page" id="page-results">
+        <div class="page-heading"><div><span class="overline">TAARIFA ZA MITIHANI</span><h1>Matokeo</h1><p>Ingiza alama na uone daraja linalokokotolewa moja kwa moja.</p></div></div>
+        <article class="panel">
+          <form id="resultForm" class="form-panel">
+            <div class="form-heading"><div><h3>Ongeza matokeo ya mtihani</h3><p>Alama lazima ziwe kati ya 0 na 100.</p></div></div>
+            <div class="form-grid">
+              <label>Mwanafunzi <em>*</em><select class="input" id="resultStudent" required><option value="">Chagua mwanafunzi</option></select></label>
+              <label>Somo <em>*</em><input class="input" id="resultSubject" required maxlength="60" placeholder="Mf. Mathematics"></label>
+              <label>Aina ya mtihani <em>*</em><select class="input" id="resultExam" required><option value="">Chagua mtihani</option><option>Test 1</option><option>Midterm</option><option>Terminal</option><option>Annual</option></select></label>
+              <label>Alama (0–100) <em>*</em><input class="input" id="resultMarks" type="number" min="0" max="100" required placeholder="Mf. 78"></label>
+            </div>
+            <div class="form-actions"><button class="btn btn-primary" type="submit">＋ Hifadhi matokeo</button></div>
+          </form>
+          <div class="toolbar"><div><h2>Orodha ya matokeo</h2><p>Matokeo yaliyohifadhiwa kwenye mfumo</p></div><input id="resultSearch" class="input search-input" type="search" placeholder="Tafuta mwanafunzi au somo..." aria-label="Tafuta matokeo"></div>
+          <div class="table-container"><table><thead><tr><th>MWANAFUNZI</th><th>SOMO</th><th>MTIHANI</th><th>ALAMA</th><th>DARAJA</th><th>VITENDO</th></tr></thead><tbody id="resultsTable"></tbody></table></div>
+          <div class="empty-state hidden" id="resultsEmpty"><div class="empty-icon">▤</div><strong>Bado hakuna matokeo</strong><p>Jaza fomu hapo juu kuongeza matokeo.</p></div>
+        </article>
+      </section>
+
+      <section class="page" id="page-classes">
+        <div class="page-heading"><div><span class="overline">MUUNDO WA SHULE</span><h1>Madarasa</h1><p>Muhtasari wa idadi ya wanafunzi katika kila darasa.</p></div></div>
+        <div class="class-grid" id="classGrid"></div>
+        <article class="panel empty-state hidden" id="classesEmpty"><div class="empty-icon">▣</div><strong>Hakuna madarasa ya kuonyesha</strong><p>Madarasa yataonekana baada ya kusajili wanafunzi.</p></article>
+      </section>
+
+      <section class="page" id="page-reports">
+        <div class="page-heading"><div><span class="overline">TAARIFA ZA UONGOZI</span><h1>Ripoti</h1><p>Angalia, pakua au chapisha muhtasari wa shule.</p></div><button class="btn btn-primary" id="printReport">⎙ Chapisha ripoti</button></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-label">Wanafunzi wote <span class="stat-symbol violet">♙</span></div><div class="stat-number" id="reportStudents">0</div></article>
+          <article class="stat-card"><div class="stat-label">Wanaume <span class="stat-symbol sky">♂</span></div><div class="stat-number" id="reportMale">0</div></article>
+          <article class="stat-card"><div class="stat-label">Wanawake <span class="stat-symbol amber">♀</span></div><div class="stat-number" id="reportFemale">0</div></article>
+          <article class="stat-card"><div class="stat-label">Matokeo <span class="stat-symbol emerald">▤</span></div><div class="stat-number" id="reportResults">0</div></article>
+        </div>
+        <article class="panel report-panel"><div class="panel-heading"><div><h2>Wanafunzi kwa darasa</h2><p>Idadi ya wanafunzi waliosajiliwa kwa kila darasa</p></div></div><div id="classReport" class="bar-list"></div></article>
+        <article class="panel data-panel"><div><h2>Usalama wa data za majaribio</h2><p>Pakua nakala ya taarifa au futa data zilizohifadhiwa kwenye browser hii.</p></div><div class="data-actions"><button class="btn btn-secondary" id="exportData">⇩ Pakua nakala ya data</button><button class="btn btn-danger" id="clearData">Futa data zote</button></div></article>
+      </section>
+
+      <footer class="footer"><span>© <span id="year"></span> SmartSchool Management System</span><span>Imetengenezwa kwa HTML, CSS na JavaScript</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
