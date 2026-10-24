@@ -69,7 +69,7 @@
           <div class="current-date"><span class="calendar-symbol">▦</span><span id="currentDate"></span></div>
           <div class="profile">
             <div class="profile-avatar">AD</div>
-            <div class="profile-text"><strong id="loggedInName">Administrator</strong><small id="loggedInRole">Admin</small></div><button class="btn btn-secondary logout-button" id="logoutButton" type="button">Toka</button>
+            <div class="profile-text"><strong id="loggedInName">Administrator</strong><small id="loggedInRole">Admin</small></div><button class="btn btn-secondary logout-button" id="logoutButton" type="button">Ondoka</button>
           </div>
         </div>
       </header>
@@ -80,16 +80,16 @@
           <button class="btn btn-primary" data-open-page="students"><span>＋</span> Sajili mwanafunzi</button>
         </div>
         <div class="stats-grid">
-          <article class="stat-card"><div class="stat-label">Jumla ya wanafunzi <span class="stat-symbol violet">♙</span></div><div class="stat-number" id="totalStudents">0</div><div class="stat-foot">Wanafunzi waliosajiliwa</div></article>
-          <article class="stat-card"><div class="stat-label">Mahudhurio leo <span class="stat-symbol emerald">✓</span></div><div class="stat-number" id="todayAttendance">0%</div><div class="stat-foot">Waliohudhuria au kuchelewa</div></article>
-          <article class="stat-card"><div class="stat-label">Rekodi za matokeo <span class="stat-symbol amber">▤</span></div><div class="stat-number" id="totalResults">0</div><div class="stat-foot">Alama zilizohifadhiwa</div></article>
-          <article class="stat-card"><div class="stat-label">Madarasa <span class="stat-symbol sky">▣</span></div><div class="stat-number" id="totalClasses">0</div><div class="stat-foot">Madarasa yenye wanafunzi</div></article>
+          <article class="stat-card"><div class="stat-label">Jumla ya wanafunzi <span class="stat-symbol violet">♙</span></div><div class="stat-number" id="totalStudents">0</div><div class="stat-foot">Wanafunzi wote</div></article>
+          <article class="stat-card"><div class="stat-label">Mahudhurio leo <span class="stat-symbol emerald">✓</span></div><div class="stat-number" id="todayAttendance">0%</div><div class="stat-foot">Kwa kiwango cha leo</div></article>
+          <article class="stat-card"><div class="stat-label">Rekodi za matokeo <span class="stat-symbol amber">▤</span></div><div class="stat-number" id="totalResults">0</div><div class="stat-foot">Rekodi za alama</div></article>
+          <article class="stat-card"><div class="stat-label">Madarasa <span class="stat-symbol sky">▣</span></div><div class="stat-number" id="totalClasses">0</div><div class="stat-foot">Madarasa ya shule</div></article>
         </div>
         <div class="dashboard-grid">
           <article class="panel">
-            <div class="panel-heading"><div><h2>Wanafunzi wa hivi karibuni</h2><p>Wanafunzi walioongezwa karibuni kwenye mfumo</p></div><button class="btn btn-link" data-open-page="students">Ona wote <span>→</span></button></div>
+            <div class="panel-heading"><div><h2>Wanafunzi wa hivi karibuni</h2><p>Wanafunzi walioongezwa karibuni kwenye mfumo</p></div><button class="btn btn-link" data-open-page="students">Ona wa kujaza</button></div>
             <div class="table-container"><table><thead><tr><th>MWANAFUNZI</th><th>NAMBA</th><th>DARASA</th><th>JINSIA</th></tr></thead><tbody id="recentStudents"></tbody></table></div>
-            <div class="empty-state" id="recentStudentsEmpty"><div class="empty-icon">♙</div><strong>Bado hakuna wanafunzi</strong><p>Sajili mwanafunzi wako wa kwanza ili kuanza.</p><button class="btn btn-primary" data-open-page="students">＋ Sajili mwanafunzi</button></div>
+            <div class="empty-state" id="recentStudentsEmpty"><div class="empty-icon">♙</div><strong>Bado hakuna wanafunzi</strong><p>Sajili mwanafunzi wako wa kwanza ili kuanza.</p><button class="btn btn-primary" data-open-page="students">Sajili mwanafunzi</button></div>
           </article>
           <article class="panel">
             <div class="panel-heading"><div><h2>Vitendo vya haraka</h2><p>Fikia kazi muhimu kwa urahisi</p></div></div>
@@ -104,16 +104,16 @@
       </section>
 
       <section class="page" id="page-students">
-        <div class="page-heading"><div><span class="overline">USIMAMIZI WA WANAFUNZI</span><h1>Wanafunzi</h1><p>Sajili, tafuta, hariri au futa taarifa za wanafunzi.</p></div><button class="btn btn-primary" id="showStudentForm">＋ Sajili mwanafunzi</button></div>
+        <div class="page-heading"><div><span class="overline">USIMAMIZI WA WANAFUNZI</span><h1>Wanafunzi</h1><p>Sajili, tafuta, hariri au futa taarifa za wanafunzi.</p></div><button class="btn btn-primary" id="showStudentForm" type="button"><span>＋</span> Ongeza mwanafunzi</button></div>
         <article class="panel">
-          <div class="toolbar"><div><h2>Orodha ya wanafunzi</h2><p id="studentCount">Jumla: 0</p></div><input id="studentSearch" class="input search-input" type="search" placeholder="Tafuta jina, namba au darasa..." aria-label="Tafuta wanafunzi"></div>
+          <div class="toolbar"><div><h2>Orodha ya wanafunzi</h2><p id="studentCount">Jumla: 0</p></div><input id="studentSearch" class="input search-input" type="search" placeholder="Tafuta jina, namba, darasa..." aria-label="Tafuta wanafunzi"></div>
           <form id="studentForm" class="form-panel hidden">
-            <div class="form-heading"><div><h3 id="studentFormHeading">Sajili mwanafunzi mpya</h3><p>Jaza taarifa zilizo hapa chini.</p></div><button class="icon-button" id="closeStudentForm" type="button" aria-label="Funga fomu">×</button></div>
+            <div class="form-heading"><div><h3 id="studentFormHeading">Sajili mwanafunzi mpya</h3><p>Jaza taarifa zilizo hapa chini.</p></div><button class="icon-button" id="closeStudentForm" type="button" aria-label="Funga fomu">✕</button></div>
             <input type="hidden" id="studentEditId">
             <div class="form-grid">
               <label>Jina kamili <em>*</em><input class="input" id="studentName" required maxlength="80" placeholder="Mf. Asha Juma"></label>
               <label>Namba ya mwanafunzi <em>*</em><input class="input" id="studentNumber" required maxlength="30" placeholder="Mf. STU001"></label>
-              <label>Darasa <em>*</em><select class="input" id="studentClass" required><option value="">Chagua darasa</option><option>Form I</option><option>Form II</option><option>Form III</option><option>Form IV</option><option>Form V</option><option>Form VI</option><option>Standard 1</option><option>Standard 2</option><option>Standard 3</option><option>Standard 4</option><option>Standard 5</option><option>Standard 6</option><option>Standard 7</option></select></label>
+              <label>Darasa <em>*</em><select class="input" id="studentClass" required><option value="">Chagua darasa</option><option value="PP1">PP1</option><option value="PP2">PP2</option><option value="PP3">PP3</option></select></label>
               <label>Jinsia <em>*</em><select class="input" id="studentGender" required><option value="">Chagua jinsia</option><option>Mwanaume</option><option>Mwanamke</option></select></label>
               <label>Tarehe ya kuzaliwa<input class="input" id="studentDob" type="date"></label>
               <label>Mzazi au mlezi<input class="input" id="studentGuardian" maxlength="80" placeholder="Jina la mzazi/mlezi"></label>
@@ -128,11 +128,11 @@
       <section class="page" id="page-attendance">
         <div class="page-heading"><div><span class="overline">UFUATILIAJI WA MAHUDHURIO</span><h1>Mahudhurio</h1><p>Rekodi na simamia mahudhurio ya wanafunzi kwa siku.</p></div></div>
         <article class="panel">
-          <div class="toolbar"><div><h2>Mahudhurio ya siku</h2><p>Chagua tarehe na hali ya kila mwanafunzi.</p></div><input type="date" id="attendanceDate" class="input date-input" aria-label="Tarehe ya mahudhurio"></div>
+          <div class="toolbar"><div><h2>Mahudhurio ya siku</h2><p>Chagua tarehe na hali ya kila mwanafunzi.</p></div><input type="date" id="attendanceDate" class="input date-input" aria-label="Chagua tarehe ya mahudhurio"></div>
           <div class="info-banner"><span>i</span> Chagua hali ya kila mwanafunzi, kisha bonyeza “Hifadhi mahudhurio”.</div>
           <div class="table-container"><table><thead><tr><th>MWANAFUNZI</th><th>DARASA</th><th>HALI YA MAHUDHURIO</th></tr></thead><tbody id="attendanceTable"></tbody></table></div>
           <div class="empty-state hidden" id="attendanceEmpty"><div class="empty-icon">✓</div><strong>Hakuna wanafunzi bado</strong><p>Sajili wanafunzi kwanza ili kurekodi mahudhurio.</p></div>
-          <div class="form-actions"><button class="btn btn-primary" id="saveAttendance">Hifadhi mahudhurio</button></div>
+          <div class="form-actions"><button class="btn btn-primary" id="saveAttendance" type="button">Hifadhi mahudhurio</button></div>
         </article>
       </section>
 
@@ -144,12 +144,12 @@
             <div class="form-grid">
               <label>Mwanafunzi <em>*</em><select class="input" id="resultStudent" required><option value="">Chagua mwanafunzi</option></select></label>
               <label>Somo <em>*</em><input class="input" id="resultSubject" required maxlength="60" placeholder="Mf. Mathematics"></label>
-              <label>Aina ya mtihani <em>*</em><select class="input" id="resultExam" required><option value="">Chagua mtihani</option><option>Test 1</option><option>Midterm</option><option>Terminal</option><option>Annual</option></select></label>
+              <label>Aina ya mtihani <em>*</em><select class="input" id="resultExam" required><option value="">Chagua mtihani</option><option>Test 1</option><option>Midterm</option><option>Term End</option></select></label>
               <label>Alama (0–100) <em>*</em><input class="input" id="resultMarks" type="number" min="0" max="100" required placeholder="Mf. 78"></label>
             </div>
             <div class="form-actions"><button class="btn btn-primary" type="submit">＋ Hifadhi matokeo</button></div>
           </form>
-          <div class="toolbar"><div><h2>Orodha ya matokeo</h2><p>Matokeo yaliyohifadhiwa kwenye mfumo</p></div><input id="resultSearch" class="input search-input" type="search" placeholder="Tafuta mwanafunzi au somo..." aria-label="Tafuta matokeo"></div>
+          <div class="toolbar"><div><h2>Orodha ya matokeo</h2><p>Matokeo yaliyohifadhiwa kwenye mfumo</p></div><input id="resultSearch" class="input search-input" type="search" placeholder="Tafuta matokeo..." aria-label="Tafuta matokeo"></div>
           <div class="table-container"><table><thead><tr><th>MWANAFUNZI</th><th>SOMO</th><th>MTIHANI</th><th>ALAMA</th><th>DARAJA</th><th>VITENDO</th></tr></thead><tbody id="resultsTable"></tbody></table></div>
           <div class="empty-state hidden" id="resultsEmpty"><div class="empty-icon">▤</div><strong>Bado hakuna matokeo</strong><p>Jaza fomu hapo juu kuongeza matokeo.</p></div>
         </article>
@@ -162,15 +162,39 @@
       </section>
 
       <section class="page" id="page-reports">
-        <div class="page-heading"><div><span class="overline">TAARIFA ZA UONGOZI</span><h1>Ripoti</h1><p>Angalia, pakua au chapisha muhtasari wa shule.</p></div><button class="btn btn-primary" id="printReport">⎙ Chapisha ripoti</button></div>
+        <div class="page-heading"><div><span class="overline">TAARIFA ZA UONGOZI</span><h1>Ripoti</h1><p>Angalia, pakua au chapisha muhtasari wa shule.</p></div><button class="btn btn-primary" id="printReport" type="button">Chapisha ripoti</button></div>
         <div class="stats-grid">
           <article class="stat-card"><div class="stat-label">Wanafunzi wote <span class="stat-symbol violet">♙</span></div><div class="stat-number" id="reportStudents">0</div></article>
           <article class="stat-card"><div class="stat-label">Wanaume <span class="stat-symbol sky">♂</span></div><div class="stat-number" id="reportMale">0</div></article>
           <article class="stat-card"><div class="stat-label">Wanawake <span class="stat-symbol amber">♀</span></div><div class="stat-number" id="reportFemale">0</div></article>
           <article class="stat-card"><div class="stat-label">Matokeo <span class="stat-symbol emerald">▤</span></div><div class="stat-number" id="reportResults">0</div></article>
         </div>
-        <article class="panel report-panel"><div class="panel-heading"><div><h2>Wanafunzi kwa darasa</h2><p>Idadi ya wanafunzi waliosajiliwa kwa kila darasa</p></div></div><div id="classReport" class="bar-list"></div></article>
-        <article class="panel data-panel"><div><h2>Usalama wa data za majaribio</h2><p>Pakua nakala ya taarifa au futa data zilizohifadhiwa kwenye browser hii.</p></div><div class="data-actions"><button class="btn btn-secondary" id="exportData">⇩ Pakua nakala ya data</button><button class="btn btn-danger" id="clearData">Futa data zote</button></div></article>
+        <article class="panel report-panel"><div class="panel-heading"><div><h2>Wanafunzi kwa darasa</h2><p>Idadi ya wanafunzi waliosajiliwa kwa kila darasa</p></div></div><div id="classReport" class="bars"></div></article>
+
+        <article class="panel">
+          <div class="panel-heading"><div><h2>Ripoti ya mwanafunzi</h2><p>Jaza alama za somo kwa kila mwanafunzi na uone jumla ya alama.</p></div></div>
+          <form id="studentReportForm" class="form-panel">
+            <div class="form-grid">
+              <label>Mwanafunzi <em>*</em><select class="input" id="reportStudent" required><option value="">Chagua mwanafunzi</option></select></label>
+              <label>Darasa <em>*</em><select class="input" id="reportStudentClass" required><option value="">Chagua darasa</option><option value="PP1">PP1</option><option value="PP2">PP2</option><option value="PP3">PP3</option></select></label>
+              <label>Msimu <em>*</em><select class="input" id="reportTerm" required><option value="Msimu wa 1">Msimu wa 1</option><option value="Msimu wa 2">Msimu wa 2</option><option value="Msimu wa 3">Msimu wa 3</option></select></label>
+              <label>Saini ya mwalimu wa darasa<input class="input" id="classTeacherName" maxlength="80" placeholder="Jina la mwalimu wa darasa"></label>
+              <label>Saini ya mkuu<input class="input" id="headTeacherName" maxlength="80" placeholder="Jina la mkuu wa shule"></label>
+            </div>
+            <div class="form-grid subject-grid">
+              <label>Kuandika <input class="input" id="reportSubjectKuandika" type="number" min="0" max="100" value="0"></label>
+              <label>Kusoma <input class="input" id="reportSubjectKusoma" type="number" min="0" max="100" value="0"></label>
+              <label>Kuhesabu <input class="input" id="reportSubjectKuhesabu" type="number" min="0" max="100" value="0"></label>
+              <label>Kuchora <input class="input" id="reportSubjectKuchora" type="number" min="0" max="100" value="0"></label>
+              <label>Kingereza <input class="input" id="reportSubjectKingereza" type="number" min="0" max="100" value="0"></label>
+            </div>
+            <div class="form-actions"><button class="btn btn-primary" type="submit">Hifadhi ripoti ya mwanafunzi</button></div>
+          </form>
+          <div class="table-container"><table><thead><tr><th>MWANAFUNZI</th><th>DARASA</th><th>MSIMU</th><th>JUMLA</th><th>ALAMA</th><th>VITENDO</th></tr></thead><tbody id="studentReportsTable"></tbody></table></div>
+          <div class="empty-state hidden" id="studentReportsEmpty"><div class="empty-icon">▥</div><strong>Bado hakuna ripoti</strong><p>Hifadhi ripoti ya mwanafunzi wa kwanza.</p></div>
+        </article>
+
+        <article class="panel data-panel"><div><h2>Usalama wa data za majaribio</h2><p>Pakua nakala ya taarifa au futa data zilizohifadhiwa kwenye browser hii.</p></div><div class="data-actions"><button class="btn btn-secondary" id="exportData" type="button">Pakua backup</button><button class="btn btn-danger" id="clearData" type="button">Futa data zote</button></div></article>
       </section>
 
       <footer class="footer"><span>© <span id="year"></span> SmartSchool Management System</span><span>Imetengenezwa kwa HTML, CSS na JavaScript</span></footer>
