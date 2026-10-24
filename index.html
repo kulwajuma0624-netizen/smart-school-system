@@ -36,6 +36,7 @@
       <small class="login-warning">Demo ya kujifunzia tu. Usitumie nywila hizi kwenye mfumo halisi.</small>
     </div>
   </section>
+
   <div class="layout">
     <aside class="sidebar" id="sidebar">
       <a class="brand" href="#" aria-label="SmartSchool mwanzo">
@@ -163,12 +164,14 @@
 
       <section class="page" id="page-reports">
         <div class="page-heading"><div><span class="overline">TAARIFA ZA UONGOZI</span><h1>Ripoti</h1><p>Angalia, pakua au chapisha muhtasari wa shule.</p></div><button class="btn btn-primary" id="printReport" type="button">Chapisha ripoti</button></div>
+
         <div class="stats-grid">
+          <article class="stat-card"><div class="stat-label">Mapato ya ada <span class="stat-symbol green">₦</span></div><div class="stat-number tiny-number" id="reportFeesIncome">0</div></article>
+          <article class="stat-card"><div class="stat-label">Matumizi <span class="stat-symbol amber">₦</span></div><div class="stat-number tiny-number" id="reportExpenses">0</div></article>
+          <article class="stat-card"><div class="stat-label">Salio <span class="stat-symbol sky">₦</span></div><div class="stat-number tiny-number" id="reportBalance">0</div></article>
           <article class="stat-card"><div class="stat-label">Wanafunzi wote <span class="stat-symbol violet">♙</span></div><div class="stat-number" id="reportStudents">0</div></article>
-          <article class="stat-card"><div class="stat-label">Wanaume <span class="stat-symbol sky">♂</span></div><div class="stat-number" id="reportMale">0</div></article>
-          <article class="stat-card"><div class="stat-label">Wanawake <span class="stat-symbol amber">♀</span></div><div class="stat-number" id="reportFemale">0</div></article>
-          <article class="stat-card"><div class="stat-label">Matokeo <span class="stat-symbol emerald">▤</span></div><div class="stat-number" id="reportResults">0</div></article>
         </div>
+
         <article class="panel report-panel"><div class="panel-heading"><div><h2>Wanafunzi kwa darasa</h2><p>Idadi ya wanafunzi waliosajiliwa kwa kila darasa</p></div></div><div id="classReport" class="bars"></div></article>
 
         <article class="panel">
@@ -194,12 +197,60 @@
           <div class="empty-state hidden" id="studentReportsEmpty"><div class="empty-icon">▥</div><strong>Bado hakuna ripoti</strong><p>Hifadhi ripoti ya mwanafunzi wa kwanza.</p></div>
         </article>
 
+        <div class="ledger-grid">
+          <article class="panel">
+            <div class="panel-heading"><div><h2>Ada ya mwanafunzi kwa mwezi</h2><p>Jaza ada ya kila mwanafunzi kwa mwezi.</p></div></div>
+            <form id="studentFeeForm" class="form-panel">
+              <div class="form-grid">
+                <label>Mwanafunzi <em>*</em><select class="input" id="feeStudent" required><option value="">Chagua mwanafunzi</option></select></label>
+                <label>Mwezi <em>*</em><select class="input" id="feeMonth" required>
+                  <option value="Januari">Januari</option><option value="Februari">Februari</option><option value="Machi">Machi</option><option value="Aprili">Aprili</option>
+                  <option value="Mei">Mei</option><option value="Juni">Juni</option><option value="Julai">Julai</option><option value="Agosti">Agosti</option>
+                  <option value="Septemba">Septemba</option><option value="Oktoba">Oktoba</option><option value="Novemba">Novemba</option><option value="Desemba">Desemba</option>
+                </select></label>
+                <label>Ada ya mwezi <em>*</em><input class="input" id="feeAmount" type="number" min="0" step="1000" required placeholder="Mf. 250000"></label>
+                <label>Ililipa <em>*</em><input class="input" id="feePaid" type="number" min="0" step="1000" required placeholder="Mf. 200000"></label>
+                <label>Salio <input class="input" id="feeBalance" type="number" min="0" step="1000" placeholder="Otomatiki"></label>
+              </div>
+              <div class="form-actions"><button class="btn btn-primary" type="submit">Hifadhi ada</button></div>
+            </form>
+            <div class="table-container"><table><thead><tr><th>MWANAFUNZI</th><th>MWEZI</th><th>ADA</th><th>ILILIPA</th><th>SALIO</th></tr></thead><tbody id="feesTable"></tbody></table></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading"><div><h2>Matumizi ya pesa / gharama</h2><p>Jaza matumizi ya fedha za shule kwa mwezi.</p></div></div>
+            <form id="expenseForm" class="form-panel">
+              <div class="form-grid">
+                <label>Kategoria <em>*</em><select class="input" id="expenseCategory" required>
+                  <option value="">Chagua kategori</option>
+                  <option value="Nafasi za kujifunza">Nafasi za kujifunza</option>
+                  <option value="Vitabu">Vitabu</option>
+                  <option value="Vifaa vya ofisi">Vifaa vya ofisi</option>
+                  <option value="Mikopo/utafiti">Mikopo/utafiti</option>
+                  <option value="Gharama ya usafiri">Gharama ya usafiri</option>
+                  <option value="Mengineyo">Mengineyo</option>
+                </select></label>
+                <label>Mwezi <em>*</em><select class="input" id="expenseMonth" required>
+                  <option value="Januari">Januari</option><option value="Februari">Februari</option><option value="Machi">Machi</option><option value="Aprili">Aprili</option>
+                  <option value="Mei">Mei</option><option value="Juni">Juni</option><option value="Julai">Julai</option><option value="Agosti">Agosti</option>
+                  <option value="Septemba">Septemba</option><option value="Oktoba">Oktoba</option><option value="Novemba">Novemba</option><option value="Desemba">Desemba</option>
+                </select></label>
+                <label>Kiasi cha fedha <em>*</em><input class="input" id="expenseAmount" type="number" min="0" step="1000" required placeholder="Mf. 150000"></label>
+                <label>Maelezo<input class="input" id="expenseDescription" maxlength="120" placeholder="Mf. Ununuzi wa vitabu"></label>
+              </div>
+              <div class="form-actions"><button class="btn btn-primary" type="submit">Hifadhi matumizi</button></div>
+            </form>
+            <div class="table-container"><table><thead><tr><th>KATEGORIA</th><th>MWEZI</th><th>KIASI</th><th>MAELEZO</th></tr></thead><tbody id="expensesTable"></tbody></table></div>
+          </article>
+        </div>
+
         <article class="panel data-panel"><div><h2>Usalama wa data za majaribio</h2><p>Pakua nakala ya taarifa au futa data zilizohifadhiwa kwenye browser hii.</p></div><div class="data-actions"><button class="btn btn-secondary" id="exportData" type="button">Pakua backup</button><button class="btn btn-danger" id="clearData" type="button">Futa data zote</button></div></article>
       </section>
 
       <footer class="footer"><span>© <span id="year"></span> SmartSchool Management System</span><span>Imetengenezwa kwa HTML, CSS na JavaScript</span></footer>
     </main>
   </div>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="script.js"></script>
 </body>
